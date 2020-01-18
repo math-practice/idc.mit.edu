@@ -1,0 +1,58 @@
+title: Article-Events
+
+pages: false
+
+fields:
+  title:
+    label: Title
+    type:  title
+  
+  short_description:
+    label: Short Description
+    type:  text
+    help: This text displays on the Events landing page.
+        
+  date:
+    icon: calendar
+    label: Date
+    type: date
+    format: LL
+    placeholder: Select a date…
+    default: today
+    required: true
+    width: 1/3
+
+  start_time:
+    icon: calendar
+    label: Start Time
+    type: time
+    format: 12
+    interval: 30
+    width: 1/3
+
+  end_time:
+    icon: calendar
+    label: End Time
+    type: time
+    format: 12
+    interval: 30
+    width: 1/3
+
+  coverimage:
+    label: Cover Image
+    type: image
+    width: 1/3
+    # required: true
+
+  series:
+    label: Series
+    type: selectastructure
+    structurepage: events
+    structurefield: series
+    optionkey: name
+    width: 1/3
+    required: true
+  
+  text:
+    label: Text
+    type: markdown

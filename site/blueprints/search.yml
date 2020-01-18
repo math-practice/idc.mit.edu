@@ -1,0 +1,11 @@
+# each blueprint starts with a unique title
+title: Search
+
+# page settings
+deletable: false
+
+# subpage settings
+pages: false
+
+# file settings
+files: true

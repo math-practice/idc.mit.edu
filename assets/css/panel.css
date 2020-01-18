@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono');
+
+* {
+  font-family: 'Roboto', sans-serif;
+  /*line-height: 1.4em;*/
+}
+
+.cm-s-visualmarkdown .cm-kirbytext-value, 
+.cm-s-visualmarkdown .cm-kirbytext-attribute,
+.cm-s-visualmarkdown .cm-kirbytext-open,
+.cm-s-visualmarkdown .cm-kirbytext-close,
+.cm-s-visualmarkdown * 
+ {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1em;
+  line-height: 1.6em;
+  font-weight: normal;
+  letter-spacing: -0.015em;
+}
+
+ .cm-s-visualmarkdown .has-header-1 {
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}

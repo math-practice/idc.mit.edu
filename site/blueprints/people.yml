@@ -1,0 +1,68 @@
+# each blueprint starts with a unique title
+title: People
+
+# page settings
+deletable: false
+
+# subpage settings
+pages: false
+
+# file settings
+files: true
+
+# fields with their field types and options
+fields:
+  title:
+    label: Title
+    type:  text
+    required: true
+    width: 1/2
+    help: Page title for the menu
+
+  display_title_1:
+    label: Display Title 1
+    type:  text
+    required: true
+    help: Page title to be displayed on the page
+  
+  contacts_1:
+    label: Contacts 1
+    type: structure
+    style: table
+    fields:
+      name:
+        label: Full Name
+        type: text
+      title:
+        label: Title
+        type: text
+      link:
+        label: Link
+        type: text
+      headshot: 
+        label: Headshot
+        type: image
+
+  display_title_2:
+    label: Display Title 2
+    type:  text
+    required: true
+    help: Page title to be displayed on the page
+  
+  contacts_2:
+    label: Contacts 2
+    type: structure
+    style: table
+    fields:
+      name:
+        label: Full Name
+        type: text
+      title:
+        label: Title
+        type: text
+      link:
+        label: Link
+        type: text
+      headshot: 
+        label: Headshot
+        type: image

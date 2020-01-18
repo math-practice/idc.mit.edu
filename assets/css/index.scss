@@ -1,0 +1,1174 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'Favorit IDC';
+  src:  url('fonts/Favorit_IDC-Regular_web.woff2') format('woff2'),
+        url('fonts/Favorit_IDC-Regular_web.woff') format('woff'),
+        url('fonts/FavoritIDC-Regular.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// ---------------------------------------------------------
+// utilities
+// ---------------------------------------------------------
+
+@mixin breakpoint($class) {
+  @if $class == sm {
+    @media (max-width: 959px) { @content; }
+  }
+  @else if $class == lg {
+    @media (min-width: 960px) { @content; }
+  }
+}
+
+@mixin alt_link($color) {
+  a {
+    color: #000;
+    transition: color 0.25s;
+    &:hover {
+      color: $color;
+    }
+  }
+}
+
+$green: #16D6CC;
+$pink: #FF3250;
+$gray: #9B9B9B;
+
+$col-width: 120px;
+$gutter: 40px;
+$col1: $col-width;
+$col2: $col-width * 2 + $gutter;
+$col3: $col-width * 3 + $gutter * 2;
+$col4: $col-width * 4 + $gutter * 3;
+$col5: $col-width * 5 + $gutter * 4;
+$col6: $col-width * 6 + $gutter * 5;
+
+// ---------------------------------------------------------
+// CSS reset from https://alligator.io/css/minimal-css-reset/
+// importnat to note: 
+// box-sizing: border-box
+// ---------------------------------------------------------
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 1.3em;
+  text-size-adjust: none;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, table, tr, th, td, figure {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol, ul {
+  // list-style: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+// ---------------------------------------------------------
+// basics
+// ---------------------------------------------------------
+html {
+  font-family: 'Favorit IDC', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 20px;
+  line-height: 1.3em;
+  @include breakpoint(sm) {
+    // margin: 20px 10px;
+  }
+}
+
+
+a {
+  color: $green;
+  text-decoration: none;
+  transition: color 0.25s;
+  &:hover {
+    color: $pink;
+  }
+}
+
+h1 {
+  font-size: 6rem;
+  line-height:0.975em;
+  margin: 80px 0;
+  text-align: center;
+  // -webkit-font-smoothing: subpixel-antialiased;
+  @include breakpoint(sm) { 
+    font-size: 3rem;
+    margin: 70px 0 40px 0;
+  }
+  &.small {
+    font-size: 6rem;
+    // margin: 40px 0;
+    @include breakpoint(sm) { 
+      font-size: 3rem;
+      margin: 70px 0 40px 0;
+    }
+  }
+}
+
+h2 {
+  font-size: 2.25rem;
+  line-height: 1.2em;
+  margin: 1em 0;
+  @include breakpoint(sm) {
+    font-size:1.75rem;
+  }
+}
+
+h3 {
+  font-size: 2.25rem;
+  line-height: 1.16em;
+  margin: 1em 0;
+}
+
+h4 {
+
+}
+
+p {
+  font-size: 1.25rem;
+  line-height: 1.4em;
+  margin: 1em 0;
+  @include breakpoint(sm) {
+    font-size:1.125rem;
+  }
+  strong, b, em, i {
+    font-weight: normal;
+    font-style: normal;
+    border-bottom: 2px dotted rgba(0,0,0,0.2);
+  }
+}
+
+// ---------------------------------------------------------
+// page elem
+// ---------------------------------------------------------
+.wrapper {
+  width:920px;
+  margin: 30px auto;
+  @include breakpoint(sm) {
+    width:100%;
+  }
+  animation: fadeIn 1.0s ease forwards;
+}
+.filter {
+  text-align: center;
+  select {
+    color: $gray;
+    margin-right: 40px;
+    display: inline;
+    font-size: 1rem;
+    font-family: 'Favorit IDC', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    border: 0;
+    border-bottom: 1px solid $gray;
+    border-radius: 0px;
+    padding: 6px 10px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%239B9B9B%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: .65em auto, 100%;
+    width: $col2;
+    padding-right:30px;
+    -webkit-padding-end: 30px;
+    &.selected {
+      background-color: #000;
+      color: #fff;
+      border-bottom: 0;
+      border-radius: 2px;
+      background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    }
+    @include breakpoint(sm) { 
+      // width: 100%;
+      margin: 10px 0;
+      text-align: center;
+    }
+  }
+  a.clear {
+    color: #000;
+    &:hover{
+      opacity: 0.5;
+    }
+    @include breakpoint(sm) { 
+      width: $col2;
+      display: block;
+      margin: 10px auto;
+      text-align: center;
+    }
+  }
+}
+header {
+  a {
+    color: #000;
+  }
+}
+nav {
+  .logo {
+    float:left;
+    margin-top:2px;
+    width:42px;
+  }
+  .search {
+    float:right;
+    width:16px;
+  }
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  ul {
+    list-style: none;
+    text-align: center;
+    li {
+      padding: 0 15px;
+      display: inline-block;
+      &.is-active {
+        a {
+          color:$pink;
+        }
+      }
+    }
+  }
+  &.mobile {
+    display: none;
+    ul {
+      display: none;
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: rgba(0,0,0,0.7);
+      z-index:777;
+      li {
+        display:block;
+        font-size: 2.25rem;
+        line-height: 1em;
+        padding: 0.25em 0;
+        background-color: #fff;
+      }
+      li:first-of-type {
+        padding-top: 1.5em;
+      }
+      li:last-of-type {
+        padding-bottom: 1.5em;
+      }
+    }
+    .nav-home {
+      z-index:888;
+      position: fixed;
+      left: 20px;
+      top: 20px;
+    }
+    .nav-hamburger {
+      z-index:999;
+      position: fixed;
+      right: 20px;
+      top: 20px;
+      width: 18px;
+      height: 18px;
+      img {
+        width:100%;
+      }
+    }
+    .nav-close {
+      z-index:999;
+      position: fixed;
+      right: 20px;
+      top: 20px;
+      width: 18px;
+      height: 18px;
+      img {
+        width:100%;
+      }
+      display:none;
+    }
+  }
+  @include breakpoint(sm) { 
+    &.normal {
+      display: none;
+    }
+    &.mobile {
+      display: block;
+    }
+  }
+}
+section {
+  margin:60px 0 0 0;
+  @include breakpoint(sm) { 
+    margin:40px 0 0 0;
+  }
+}
+.content {
+  float:left;
+  p, h2, h3, h4 {
+    width: $col4;
+    @include breakpoint(sm) { 
+      width: 100%;
+    }
+  }
+  &.right {
+    p, h2, h3, h4 {
+      margin-left: 160px;
+      @include breakpoint(sm) { 
+        margin-left: 0;
+      }
+    }
+  }
+  p:first-of-type {
+    margin-top:0;
+  }
+  figure {
+    width:$col4;
+    @include breakpoint(sm) { 
+      width: 100%;
+    }
+  }
+}
+.side {
+  width: $col2;
+  color: $gray;
+  @include breakpoint(sm) { 
+    width: 100%;
+  }
+  a {
+    color: $gray;
+    transition: color 0.25s;
+    border-bottom: 1px solid rgba(155,155,155, 0.3);
+    &:hover {
+      color: $pink;
+      border-bottom: none;
+    }
+  }
+  p {
+    font-size: 1rem;
+  }
+  &.right {
+    float:left;
+    margin-left: $gutter;
+    @include breakpoint(sm) { 
+      margin: 20px 0;
+    }
+  }
+  p:first-of-type {
+    margin-top:0;
+  }
+}
+
+figure {
+  position: relative;
+  span.overlay {
+    width: $col4;
+    position:absolute;
+    transition: opacity 0.5s;
+    @include breakpoint(sm) { 
+      width: 100%;
+    }
+    &:hover {
+      opacity:0;
+    }
+  }
+  img {
+    display: block;
+  }
+}
+article {
+  margin:100px 0;
+  @include breakpoint(sm) {
+    margin:40px 0 60px 0;
+  }
+  .alt-summary {
+    width: $col2;
+    @include breakpoint(sm) { 
+      width: 100%;
+      text-align: center;
+    }
+    @include alt_link($pink);
+    .meta {
+      font-size: 1rem;
+      color: $gray;
+      margin: 0 0 0.5em 0;
+    }
+    h2 {
+      margin:0;
+      line-height: 1.1em;
+    }
+  }
+  .alt-thumb {
+    width: $col4;
+    height: 9/16*$col4;
+    background-image: url('../images/bg.png');
+    background-size: 20px;
+    @include breakpoint(sm) { 
+      width: 100%;
+      height: auto;
+      margin-top:0.5em;
+    }
+  }
+  &.list:nth-child(odd){
+    div {
+      float:right;
+      @include breakpoint(sm) { 
+        clear:both;
+      }
+    }
+    .alt-thumb {
+      margin-right: $gutter;
+      @include breakpoint(sm) { 
+        margin-right: 0;
+      }
+    }
+  }
+  &.list:nth-child(even){
+    div {
+      float:left;
+      @include breakpoint(sm) { 
+        clear:both;
+      }
+    }
+    .alt-summary {
+      margin-right: $gutter;
+      @include breakpoint(sm) { 
+        margin-right: 0;
+      }
+    }
+  }
+  .lab-button {
+    display: inline-block;
+    border: 1px solid #000;
+    padding: 6px 10px;
+    border-radius: 2px;
+    transition: background-color 0.25s;
+    color: #000;
+    margin: 1em 0;
+    &:hover {
+      border: 1px solid $green;
+      background-color: $green;
+      color: #fff;
+    }
+  }
+}
+article.single {
+  margin-top:30px;
+  @include breakpoint(sm) { 
+    margin-top:60px;
+  }
+  h1 {
+    font-size: 3rem;
+    line-height:1.1em;
+    margin:0.25em 0;
+    width: $col5;
+    text-align: left;
+    @include breakpoint(sm){
+      font-size: 2rem;
+      width: 100%;
+    }
+  }
+  .meta {
+    font-size: 1rem;
+    @include alt_link($pink);
+    .page {
+      text-transform: uppercase;
+    }
+    .category {
+      color: $gray;
+    }
+  }
+  .content {
+    margin-top: 1em;
+    margin-left: $col1 + $gutter;
+    @include breakpoint(sm){
+      margin: 1em 0;
+    }
+    .lab-button {
+      margin-top:0;
+      margin-bottom: 2em;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+    }
+    strong, b, em, i {
+      font-weight: normal;
+      font-style: normal;
+      border-bottom: 2px dotted rgba(0,0,0,0.2);
+    }
+    figure {
+      margin-top: 60px;
+      margin-bottom: 60px;
+      margin-left: 0 - $col1 - $gutter;
+      width: $col6;
+      img {
+        width: $col4;
+      }
+      figcaption {
+        float:right;
+        color: $gray;
+        width: $col2;
+      }
+      iframe {
+        width: $col4;
+        height: 9/16*$col4;
+      }
+      @include breakpoint(sm){
+        width:100%;
+        margin: 3em 0;
+        img {
+          width: inherit;
+        }
+        iframe {
+          width: inherit;
+          height: 9/16*100vw;
+        }
+        figcaption {
+          float:none;
+          width: 100;
+          margin: 1em 0;
+        }
+      }
+    }
+    hr {
+      border:0;
+      background-color: rgba(0,0,0,0.2);
+      height: 1px;
+      width: $col1;
+      margin: 60px 0;
+    }
+  }
+}
+.pagination {
+  ul {
+    text-align: left;
+    @include breakpoint(sm) {
+      text-align:center;
+    }
+    a {
+      color: #000;
+      transition: 0.25s;
+      &:hover {
+        color: $pink;
+      }
+    }
+    li {
+      display: inline-block;
+      padding: 0 5px;
+      a.num {
+        display: block;
+        width: 30px;
+        height: 30px;
+        border: 1px solid #000;
+        border-radius: 2px;
+        text-align: center;
+        line-height: 30px;
+        &.active {
+          background-color: #000;
+          color:#fff;
+        }
+        &:hover {
+          background-color: $pink;
+          color:#fff;
+          border: 1px solid $pink;
+        }
+      }
+    }
+  }
+}
+// Home ------------------------------------------------------
+section.full-logo {
+  margin: 60px 0 50px 0;
+  @include breakpoint(sm) {
+    margin: 80px 0 40px 0;
+  }
+}
+section.news-summary {
+  @include breakpoint(sm) {
+    margin-top: 40px;
+  }
+  ul {
+    list-style-type: none;
+    float:left;
+  }
+  .thumbs {
+    width: $col4;
+    border-radius: 3px;
+    position: relative;
+    @include breakpoint(sm) {
+      width:100%;
+    }
+    // overflow: hidden;
+    a {
+      outline: none;
+    }
+    .pink {
+      width: $col4;
+      @include breakpoint(sm) {
+        width:100%;
+      }
+      &:hover {
+        opacity:0;
+      }
+      img {
+        opacity:0;
+        transition: opacity 1.5s;
+        &.processed {
+          opacity:1;
+        }
+      }
+    }
+    figcaption {
+      outline: none;
+      color: $pink;
+      margin-top:1em;
+      @include breakpoint(sm) {
+        // margin-bottom: 2em;
+      }
+    }
+    ul.slick-dots {
+      list-style-type: none;
+      padding-left: 15px;
+      top:370px;
+      position:absolute;
+      @include breakpoint(sm) {
+        display: none;
+      }
+      li {
+        display: inline-block;
+        margin: 0 6px;
+        button {
+          border: 1px solid #fff;
+          width: 12px;
+          height: 12px;
+          border-radius: 20px;
+          text-indent: -100px;
+          overflow: hidden;
+          padding:0;
+          outline: none;
+          background-color: transparent;
+          transition: background 0.25s; 
+          &:hover {
+            background-color: #fff;
+            cursor: pointer;
+          }
+        }
+        &.slick-active {
+          button {
+            background-color: #fff;
+          }    
+        }
+      }
+    }
+  }
+  .text {
+    margin-left: $gutter;
+    width: $col2;
+    color: $gray;
+    @include breakpoint(sm) {
+      display: none;
+    }
+    li {
+      margin: 1em 0;
+      @include alt_link($pink);
+      &.header {
+        border-bottom:1px solid #000;
+        margin:0.5em 0 2em 0;
+        h4 {
+          color: #000;
+          position:absolute;
+          margin-top: -0.5em;
+          padding-right: 0.5em;
+          background-color: #fff;
+          text-transform: uppercase;
+          letter-spacing: 0.03em;
+        }
+      }
+    }
+    @include breakpoint(sm) {
+      width: 100%;
+      margin-left: 0;
+    }
+  }
+}
+h2 {
+  @include breakpoint(sm) {
+    font-size: 1.5rem;
+  }
+}
+section.intro-text {
+  column-count: 2;
+  column-gap: 50px;
+  break-inside: avoid;
+  margin-top: 3em;
+  p {
+    margin-top:0;
+  }
+  @include breakpoint(sm) {
+    column-count: 1;
+    margin-top: 1em;
+    p {
+      font-size: 1rem;
+    }
+  }
+}
+// About -----------------------------------------------------
+.idc-sutd {
+  text-align:center;
+  .sutd {
+    width: 158px;
+  }
+}
+// People ----------------------------------------------------
+section.people {
+  ul {
+    font-size:0;
+    // text-align: center;
+    li {
+      font-size: 1rem;
+      list-style-type: none;
+      display: inline-block;
+      vertical-align: top;
+      width: 145px;
+      height: 345px;
+      margin-left:48px;
+      @include breakpoint(sm) {
+        display:block;
+        margin: 0 auto 40px auto;
+        height: auto;
+      }
+      &:nth-child(5n+1){
+        margin-left:0;
+        @include breakpoint(sm) {
+          margin-left:auto;
+        }
+      }
+      figure {
+        .overlay {
+          width: 145px;
+        }
+      }
+      h4 {
+        text-align: left;
+        margin-top: 0.5em;
+        margin-left: 1px;
+      }
+      p.title {
+        text-align: left;
+        font-size:0.875rem;
+        color: $gray;
+        // line-height:1rem;
+        margin-top:0.125em;
+        margin-left: 1px;
+      }
+      @include alt_link($pink);
+    }
+  }
+}
+section.people-small {
+  ul {
+    // font-size:0;
+    li {
+      float:left;
+      width: $col2;
+      list-style-type: none;
+      margin-right: $gutter/2;
+      height:120px;
+    }
+    figure {
+      width: 80px;
+      float:left;
+      margin: 0 15px 50px 0;
+      .overlay {
+        width: 80px;
+      }
+    }
+    p.title {
+      text-align: left;
+      font-size:0.875rem;
+      color: $gray;
+      line-height:1rem;
+      margin-top:0.125em;
+      margin-left: 1px;
+    }
+    @include alt_link($pink);
+  }
+}
+section.research{
+  @include breakpoint(sm) {
+    margin-top:0;
+  }
+}
+// lab 
+section.labs{
+  ul {
+    list-style-type: none;
+    li {
+      width: $col2;
+      height: 600px;
+      float: left;
+      display: block;
+      // text-align: center;
+      @include breakpoint(sm){
+        text-align: left;
+        margin: 60px auto;
+        float: none;
+        height: auto;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+      @include alt_link($green);
+      &:nth-child(3n+2) {
+        //middle ones
+        margin: 0 $gutter;
+        @include breakpoint(sm){
+          margin: 60px 20px;
+        }
+      }
+      &:nth-child(even) {
+        //horizontal images
+        margin-top: 100px;
+        height: 600-100px;
+        @include breakpoint(sm){
+          margin: 60px 20px;
+          height: auto;
+        }
+        figure {
+          .overlay {
+            width: $col2;
+          }
+        }
+      }
+      &:nth-child(odd) {
+        //vertical images
+        figure {
+          width: 225px;
+          margin-left: 27px;
+          .overlay {
+            width: 225px;
+          }
+        }
+      }
+      p {
+        text-align: center;
+        line-height: 1.2em;
+        &.desc {
+          font-size: 1rem;
+          line-height: 1.4em;
+          color:$gray;
+        }
+      }
+    }
+  }
+}
+// education
+section.education {
+  margin:0;
+  h1 {
+    font-size: 6rem;
+    clear: both;
+    margin:0;
+    padding: 80px 0;
+    @include breakpoint(sm) {
+      font-size:3rem;
+      padding: 40px 0;
+    }
+  }
+  p {
+    margin-top: 0;
+  }
+  figure {
+    margin-bottom: 2em;
+  }
+  figure.side {
+    width: $col3;
+    float:left;
+    @include breakpoint(sm) {
+      width:100%;
+    }
+  }
+  figure.side + p, figure.side + p + p, figure.side + p + p + p, figure.side + p + p + p + p, figure.side + p + p + p + p + p {
+    width: $col3;
+    float:left;
+    margin-left: $gutter;
+    @include breakpoint(sm) {
+      width:100%;
+      margin-left:0;
+      float:none;
+    }
+  }
+  table {
+    width: $col6;
+    margin: 2em 0;
+    @include breakpoint(sm) {
+      width: 100%;
+    }
+    border-collapse: collapse;
+    th {
+      // font-size: 1.25rem;
+      text-align: left;
+      text-transform: uppercase;
+      padding: 1em 1em 1em 0;
+    }
+    tr {
+      border-bottom: 1px solid;
+    }
+    td {
+      padding: 1em 1em 1em 0;
+    }
+    td:first-of-type {
+      word-break: break-all;
+    }
+  }
+  blockquote {
+    margin: 0 0 0 $gutter;
+    width: $col2;
+    float: right;
+    p {
+      font-size:1rem;
+      color:$green;
+      a {
+        border-bottom: 1px solid rgba(155, 155, 155, 0.3);
+      }
+    }
+    @include breakpoint(sm) {
+      width: 100%;
+      float:none;
+      margin:0;
+    }
+  }
+  blockquote + p {
+    width: $col4;
+    float: right;
+    @include breakpoint(sm) {
+      width: 100%;
+      float:none;
+    }
+  }
+}
+//news
+section.news {
+  article {
+    .alt-summary {
+      width: $col3;
+      @include breakpoint(sm) {
+        width: 100%;
+      }
+    }
+    .alt-thumb {
+      width: $col3;
+      height: 9/16*$col3;
+      @include breakpoint(sm) {
+        width: 100%;
+        height: auto;
+      }
+    }
+    figure span.overlay {
+     width: $col3; 
+     @include breakpoint(sm) {
+       width: 100%;
+     }
+    }
+    .date {
+      color:#000;
+    }
+  }
+}
+//events
+section.events {
+  article {
+    margin: 80px 0;
+    @include breakpoint(sm) {
+      margin: 40px 0;
+    }
+    .alt-summary {
+      width: $col2;
+      @include breakpoint(sm) {
+        width: 100%;
+      }
+      .date {
+        margin-top:0.25em;
+      }
+      .description {
+        color:#000;
+      }
+      .series {
+        color:#000;
+        margin-bottom: 0.25em;
+      }
+      @include breakpoint(lg) {
+        &.industry-day{
+          width: $col4;
+          position: absolute;
+          z-index:999;
+          margin: $gutter/2;
+          color:#fff;
+          a {
+            color:#fff;
+          }
+          .meta {
+            color:#fff;
+          }
+        }
+      }
+    }
+    .alt-thumb {
+      width: $col4;
+      @include breakpoint(sm) {
+        width: 100%;
+      }
+      @include breakpoint(lg) {
+        &.industry-day{
+          width: $col6;
+          height: 9/16*$col4;
+          overflow: hidden;
+          margin-right:0 !important;
+          figure span.overlay {
+            width: $col6; 
+            height: 9/16*$col4;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+    figure span.overlay {
+     width: $col4; 
+     @include breakpoint(sm) {
+        width: 100%;
+      }
+    }
+  }
+}
+// Search
+input.search {
+  font-family: 'Favorit IDC', Helvetica, Arial, sans-serif;
+  font-size: 6rem;
+  line-height:0.975em;
+  margin: 80px 0 0 0;
+  width: 100%;
+  // height: 200px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  -webkit-appearance: none;
+  text-align:center;
+  outline: none;
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+  &::placeholder {
+    opacity:0.3;
+  }
+}
+section.search {
+  h2 {
+    margin: 80px auto 0 auto;
+    width: $col5;
+    a {
+      color: #000;
+      transition: color 0.25s;
+      &:hover {
+        color: $pink;
+      }
+    }
+  }
+  .url {
+    color:gray;
+    a {
+      color: $gray;
+      transition: color 0.25s;
+      &:hover {
+        color: $pink;
+      }
+    }
+  }
+  ul {
+    list-style-type: none;
+    width: $col5;
+    margin: 0 auto;
+    li {
+      text-align: center;
+    }
+  }
+}
+// Footer ----------------------------------------------------
+footer {
+  border-top: 1px solid;
+  padding: 20px 0;
+  margin: 60px 0;
+  @include breakpoint(sm) {
+    float: right;
+    margin:40px 0 0 0;
+  }
+  .sub-mit {
+    width: 35px;
+    float:right;
+    margin-top: -2.5em;
+    @include breakpoint(sm) {
+      float: left;
+      margin-top:0;
+    }
+  }
+  .sub-social {
+    float:right;
+    margin-top: -2.5em;
+    margin-right:125px;
+    i {
+      margin: 0 0.5em;
+    } 
+    a i {
+      color:#000;
+      transition: color 0.25s; 
+      &:hover {
+        color: $pink;
+      }
+    }
+    @include breakpoint(sm) {
+      float: right;
+      margin:0;
+      i {
+        margin: 0 0 0 1em;
+      }
+    }
+  }
+  p {
+    font-size: 1rem;
+    // line-height: 1em;
+    margin:0;
+    @include breakpoint(sm) {
+      margin-bottom: 1em;
+    }
+  }
+}
+// ---------------------------------------------------------
+// Utilities
+// ---------------------------------------------------------
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+@keyframes fadeIn{
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}

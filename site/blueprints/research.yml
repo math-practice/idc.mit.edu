@@ -1,0 +1,48 @@
+# each blueprint starts with a unique title
+title: Research
+
+# page settings
+deletable: false
+
+# subpage settings
+pages: 
+  template: article-research
+  sort: flip
+  num: date
+
+# file settings
+files: false
+
+options: 
+  template: false
+  status: false
+
+icon: copy
+
+fields:
+  title:
+    label: Title
+    type: title
+    required: true
+    width: 2/5
+    help: Page title for the menu
+
+  display_title:
+    label: Display Title
+    type: text
+    required: true
+    width: 2/5
+    help: Page title to be displayed on the page
+
+  perpage:
+    label: Posts per page
+    type: number
+    min: 1
+    max: 20
+    default: 5
+    width: 1/5
+  
+  tags:
+    label: Research Categories
+    type: tags
+    help: This defines the research categories that individual research articles belong.

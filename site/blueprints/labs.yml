@@ -1,0 +1,45 @@
+# each blueprint starts with a unique title
+title: Labs
+
+# page settings
+deletable: false
+
+# subpage settings
+pages: false
+
+# file settings
+files: true
+
+# fields with their field types and options
+fields:
+  title:
+    label: Title
+    type:  text
+    required: true
+    width: 2/4
+    help: Page title for the menu
+
+  display_title:
+    label: Display Title
+    type: text
+    required: true
+    width: 2/4
+    help: Page title to be displayed on the page
+
+  labs:
+    label: Labs
+    type: structure
+    style: table
+    fields:
+      name:
+        label: Lab Name
+        type: text
+      description:
+        label: Description
+        type: text
+      link:
+        label: Link
+        type: text
+      image: 
+        label: Image
+        type: image

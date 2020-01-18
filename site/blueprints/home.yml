@@ -1,0 +1,27 @@
+# each blueprint starts with a unique title
+title: Home
+
+# page settings
+deletable: false
+
+# subpage settings
+pages: false
+
+# file settings
+files: false
+
+icon: home
+
+# fields with their field types and options
+fields:
+  # title:
+  #   label: Title
+  #   type:  text
+
+  lead:
+    label: Lead Paragraph
+    type:  markdown
+
+  intro:
+    label: Intro Paragraph
+    type:  markdown
