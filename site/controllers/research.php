@@ -9,7 +9,7 @@ return function($site, $pages, $page) {
     $articles = $articles->filterBy('categories', param("topic"), ',');
   }
   if (param("lab")) {
-    $articles = $articles->filterBy('Lab', param("lab"), ',');
+    $articles = $articles->filterBy('Lab', param("lab"));
   }
   
   // apply pagination

@@ -3,7 +3,7 @@
   <main class="main" role="main">
 
       <h1><?= $page->display_title()->html() ?></h1>  
-
+      
     <div class="filter">
       <select onChange="window.location.href=this.value" <?= (param("topic")) ? "class='selected'":"" ?>>
         <option value="<?= $page->url() ?>/topic:/lab:<?= (param("lab")) ? param('lab'):"" ?>">All Research Topics</option>
@@ -35,6 +35,7 @@
                 // Get matching lab's links from the Structure
                 $lab_link = "";
                 foreach($site->find('labs')->labs()->toStructure() as $lab) {
+                  // echo "<br>–".$lab->name()->value();
                   if ($lab->name()->value() == $article->lab()->value()){
                     $lab_link = $lab->link();
                   }
